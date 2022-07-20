@@ -4,13 +4,19 @@ import { MuiThemeProvider, CssBaseline } from "@material-ui/core";
 import theme from "./theme";
 import App from "./App";
 import { BrowserRouter as Router } from "react-router-dom";
-
+import { ApolloProvider } from "@apollo/react-hooks";
+import client from "./graphql/client";
+import AuthProvider from "./auth";
 ReactDOM.render(
-  <MuiThemeProvider theme={theme}>
-    <CssBaseline />
-    <Router>
-      <App />
-    </Router>
-  </MuiThemeProvider>,
+  <ApolloProvider client={client}>
+    <AuthProvider>
+      <MuiThemeProvider theme={theme}>
+        <CssBaseline />
+        <Router>
+          <App />
+        </Router>
+      </MuiThemeProvider>
+    </AuthProvider>
+  </ApolloProvider>,
   document.getElementById("root")
 );

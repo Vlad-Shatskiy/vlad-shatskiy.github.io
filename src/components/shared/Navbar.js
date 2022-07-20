@@ -81,7 +81,6 @@ function Search({ history }) {
   const hasResults = Boolean(query) && results.length > 0;
   // let loading = true;
   React.useEffect(() => {
-    console.log(hasResults);
     if (!query.trim()) return;
 
     setResults(Array.from({ length: 5 }, () => getDefaultUser()));

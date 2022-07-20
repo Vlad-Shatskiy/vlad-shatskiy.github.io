@@ -15,9 +15,10 @@ import Layout from "../components/shared/Layout";
 import { defaultCurrentUser } from "../data";
 import { useProfilePageStyles } from "../styles";
 import ProfilePicture from "../components/shared/ProfilePicture";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { GearIcon } from "../icons";
 import ProfileTabs from "../components/profile/ProfileTabs";
+import { AuthContext } from "../auth";
 function ProfilePage() {
   const isOwner = true;
   const [showOptionsMenu, setOptionsMenu] = React.useState(false);
@@ -226,8 +227,16 @@ const NameBioSection = ({ user }) => {
 };
 const OptionsMenu = ({ handleCloseMenu }) => {
   const classes = useProfilePageStyles();
+  const { signOut } = React.useContext(AuthContext);
   const [showLogoutMessage, setLogOutMessage] = React.useState(false);
-  const handleLogOutClick = () => setLogOutMessage(true);
+  const history = useHistory();
+  const handleLogOutClick = () => {
+    setLogOutMessage(true);
+    setTimeout(() => {
+      signOut();
+      history.push("/accounts/login");
+    }, 2000);
+  };
   return (
     <Dialog
       open
