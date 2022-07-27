@@ -1,29 +1,30 @@
 {
   "files": {
-    "main.js": "/static/js/main.22bc35ed.chunk.js",
-    "main.js.map": "/static/js/main.22bc35ed.chunk.js.map",
-    "runtime-main.js": "/static/js/runtime-main.33c1dd12.js",
-    "runtime-main.js.map": "/static/js/runtime-main.33c1dd12.js.map",
+    "main.js": "/static/js/main.7cd3ba81.chunk.js",
+    "main.js.map": "/static/js/main.7cd3ba81.chunk.js.map",
+    "runtime-main.js": "/static/js/runtime-main.1386f780.js",
+    "runtime-main.js.map": "/static/js/runtime-main.1386f780.js.map",
     "static/css/2.c60feeff.chunk.css": "/static/css/2.c60feeff.chunk.css",
-    "static/js/2.5d6716d2.chunk.js": "/static/js/2.5d6716d2.chunk.js",
-    "static/js/2.5d6716d2.chunk.js.map": "/static/js/2.5d6716d2.chunk.js.map",
-    "static/js/3.0e641062.chunk.js": "/static/js/3.0e641062.chunk.js",
-    "static/js/3.0e641062.chunk.js.map": "/static/js/3.0e641062.chunk.js.map",
+    "static/js/2.9f418708.chunk.js": "/static/js/2.9f418708.chunk.js",
+    "static/js/2.9f418708.chunk.js.map": "/static/js/2.9f418708.chunk.js.map",
+    "static/js/3.fd0dc097.chunk.js": "/static/js/3.fd0dc097.chunk.js",
+    "static/js/3.fd0dc097.chunk.js.map": "/static/js/3.fd0dc097.chunk.js.map",
     "index.html": "/index.html",
-    "precache-manifest.af2e8ce7f6ed50406f6fea929800d709.js": "/precache-manifest.af2e8ce7f6ed50406f6fea929800d709.js",
+    "precache-manifest.f74f4ef3ab009fd311a10d41d6cdac2f.js": "/precache-manifest.f74f4ef3ab009fd311a10d41d6cdac2f.js",
     "service-worker.js": "/service-worker.js",
     "static/css/2.c60feeff.chunk.css.map": "/static/css/2.c60feeff.chunk.css.map",
-    "static/js/2.5d6716d2.chunk.js.LICENSE.txt": "/static/js/2.5d6716d2.chunk.js.LICENSE.txt",
+    "static/js/2.9f418708.chunk.js.LICENSE.txt": "/static/js/2.9f418708.chunk.js.LICENSE.txt",
     "static/media/default-user-image.jpg": "/static/media/default-user-image.a04d849c.jpg",
     "static/media/facebook-icon-blue.svg": "/static/media/facebook-icon-blue.cbb9b56a.svg",
+    "static/media/google.png": "/static/media/google.0eb80781.png",
     "static/media/icon-sheet-2.png": "/static/media/icon-sheet-2.a9a13771.png",
     "static/media/icon-sheet.png": "/static/media/icon-sheet.3dfb71b4.png",
     "static/media/slick-theme.css": "/static/media/slick.f97e3bbf.svg"
   },
   "entrypoints": [
-    "static/js/runtime-main.33c1dd12.js",
+    "static/js/runtime-main.1386f780.js",
     "static/css/2.c60feeff.chunk.css",
-    "static/js/2.5d6716d2.chunk.js",
-    "static/js/main.22bc35ed.chunk.js"
+    "static/js/2.9f418708.chunk.js",
+    "static/js/main.7cd3ba81.chunk.js"
   ]
 }
