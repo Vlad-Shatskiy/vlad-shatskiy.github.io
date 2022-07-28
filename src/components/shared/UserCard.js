@@ -1,12 +1,11 @@
 import { Avatar, Typography } from "@material-ui/core";
 import React from "react";
 import { Link } from "react-router-dom";
-import { defaultUser } from "../../data";
 import { useUserCardStyles } from "../../styles";
 
-function UserCard({ user = defaultUser, avatarSize = 44 }) {
+function UserCard({ user, avatarSize = 44, location }) {
   const classes = useUserCardStyles({ avatarSize });
-  // if (user) {
+
   const { username, profile_image, name } = user;
   return (
     <div className={classes.wrapper}>
@@ -28,17 +27,11 @@ function UserCard({ user = defaultUser, avatarSize = 44 }) {
           variant="body2"
           className={classes.typography}
         >
-          {name}
+          {location || name}
         </Typography>
       </div>
     </div>
   );
-  // console.log(post);
-  // console.log(props.post);
-  // return <div>UserCard</div>;
-  // } else {
-  //   return null;
-  // }
 }
 
 export default UserCard;

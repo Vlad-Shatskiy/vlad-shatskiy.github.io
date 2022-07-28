@@ -19,9 +19,7 @@ import { AuthContext } from "./auth";
 import { useSubscription } from "@apollo/react-hooks";
 import { ME } from "./graphql/subscriptions";
 import LoadingScreen from "./components/shared/LoadingScreen";
-
 export const UserContext = React.createContext();
-
 function App() {
   const { authState } = React.useContext(AuthContext);
   const isAuth = authState.status === "in";
@@ -37,7 +35,6 @@ function App() {
       prevLocation.current = location;
     }
   }, [location, modal, history.action]);
-
   if (loading) return <LoadingScreen />;
   if (!isAuth) {
     return (
@@ -51,8 +48,13 @@ function App() {
   const isModalOpen = modal && prevLocation.current !== location;
   const me = isAuth && data ? data.default_users[0] : null;
   const currentUserId = me.id;
+  const followingIds = me.following.map(({ user }) => user.id);
+  const followerIds = me.followers.map(({ user }) => user.id);
+  const feedIds = [...followerIds, currentUserId];
   return (
-    <UserContext.Provider value={{ me, currentUserId }}>
+    <UserContext.Provider
+      value={{ me, currentUserId, followerIds, followingIds, feedIds }}
+    >
       <Switch location={isModalOpen ? prevLocation.current : location}>
         <Route exact path="/" component={FeedPage} />
         <Route path="/explore" component={ExplorePage} />
@@ -67,5 +69,4 @@ function App() {
     </UserContext.Provider>
   );
 }
-
 export default App;

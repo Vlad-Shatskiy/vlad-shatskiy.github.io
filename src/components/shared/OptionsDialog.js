@@ -1,10 +1,33 @@
 import { Button, Dialog, Divider, Zoom } from "@material-ui/core";
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useOptionsDialogStyles } from "../../styles";
-import { defaultPost } from "../../data";
-function OptionsDialog({ onClose }) {
+import { UserContext } from "../../App";
+import { useMutation } from "@apollo/react-hooks";
+import { DELETE_POST, UNFOLLOW_USER } from "../../graphql/mutations";
+function OptionsDialog({ onClose, authorId, postId }) {
   const classes = useOptionsDialogStyles();
+  const { currentUserId, followingIds } = React.useContext(UserContext);
+  const isOwner = authorId === currentUserId;
+  const buttonText = isOwner ? "Delete" : "Unfollow";
+  const isFollowing = followingIds.some((id) => id === authorId);
+  const isUnrelatedUser = !isOwner && !isFollowing;
+  const [unFollowUser] = useMutation(UNFOLLOW_USER);
+  const [deletePost] = useMutation(DELETE_POST);
+  const history = useHistory();
+  async function handleDeletePost() {
+    const variables = { postId, userId: currentUserId };
+    await deletePost({ variables });
+    onClose();
+    history.push("/");
+    window.location.reload();
+  }
+  const handleUnfollowUser = () => {
+    const variables = { userIdToFollow: authorId, currentUserId };
+    unFollowUser({ variables });
+    onClose();
+  };
+  const onClick = isOwner ? handleDeletePost : handleUnfollowUser;
 
   return (
     <Dialog
@@ -13,10 +36,14 @@ function OptionsDialog({ onClose }) {
       onClose={onClose}
       TransitionComponent={Zoom}
     >
-      <Button className={classes.redButton}>Unfollow</Button>
+      {!isUnrelatedUser && (
+        <Button onClick={onClick} className={classes.redButton}>
+          {buttonText}
+        </Button>
+      )}
       <Divider />
       <Button className={classes.button}>
-        <Link to={`/p/${defaultPost.id}`}>Go to post</Link>
+        <Link to={`/p/${postId}`}>Go to post</Link>
       </Button>
       <Divider />
       <Button className={classes.button}>Share</Button>

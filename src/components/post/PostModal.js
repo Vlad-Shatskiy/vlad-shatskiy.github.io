@@ -9,7 +9,6 @@ function PostModal() {
   const history = useHistory();
   const classes = usePostModalStyles();
   const { postId } = useParams();
-  console.log({ postId });
 
   return (
     <>
@@ -36,7 +35,7 @@ function PostModal() {
           },
         }}
       >
-        <Post id={postId} />
+        <Post postId={postId} />
       </Modal>
       <div onClick={() => history.goBack()} className={classes.close}>
         <CloseIcon />

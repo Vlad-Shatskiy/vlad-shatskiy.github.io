@@ -12,6 +12,8 @@ import SEO from "../components/shared/Seo";
 import { useLoginPageStyles } from "../styles";
 import FacebookIconBlue from "../images/facebook-icon-blue.svg";
 import FacebookIconWhite from "../images/facebook-icon-white.png";
+import Google from "../images/google.png";
+
 import { useForm } from "react-hook-form";
 import { AuthContext } from "../auth";
 import isEmail from "validator/lib/isEmail";
@@ -24,7 +26,7 @@ function LoginPage() {
   const client = useApolloClient();
   const [error, setError] = React.useState("");
   const [showPasswordVisibility, setPasswordVisibility] = React.useState(false);
-  const { register, handleSubmit, watch, formState, errors } = useForm({
+  const { register, handleSubmit, watch, formState } = useForm({
     mode: "onBlur",
   });
   const { logInWithEmalAndPassword } = React.useContext(AuthContext);
@@ -72,10 +74,6 @@ function LoginPage() {
             <form onSubmit={handleSubmit(onSubmit)}>
               <TextField
                 name="input"
-                // {...register("input", {
-                //   required: true,
-                //   minLength: 5,
-                // })}
                 inputRef={register({
                   required: true,
                   minLength: 5,
@@ -90,10 +88,6 @@ function LoginPage() {
               <TextField
                 fullWidth
                 name="password"
-                // {...register("password", {
-                //   required: true,
-                //   minLength: 5,
-                // })}
                 inputRef={register({
                   required: true,
                   minLength: 5,
@@ -165,7 +159,6 @@ export const LoginWithFacebook = ({ color, iconColor, variant }) => {
   async function handleLogInWithGoogle() {
     try {
       await logInWithGoogle();
-      // history.push("/");
       setTimeout(() => {
         history.push("/");
       }, 2000);
@@ -182,12 +175,13 @@ export const LoginWithFacebook = ({ color, iconColor, variant }) => {
         color={color}
         variant={variant}
       >
-        <img
+        {/* <img
           src={facebookIcon}
-          alt="facebook icon"
+          alt="google icon"
           className={classes.facebookIcon}
-        />
-        Log in with Facebook
+        /> */}
+        <img src={Google} alt="google icon" className={classes.facebookIcon} />
+        Log in with Google
       </Button>
       <AuthError error={error} />
     </>
