@@ -22,6 +22,8 @@
   - Apollo
   - GraphQL
   - Firebase
+  - Hasura
+  - Heroku
 
 - DB
 
